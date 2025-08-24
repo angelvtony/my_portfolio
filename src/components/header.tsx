@@ -7,7 +7,7 @@ import { Menu, Code } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetDescription } from "@/components/ui/sheet";
 import { personalInfo } from "@/lib/data";
 
 const navItems = [
@@ -70,6 +70,10 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
+              <SheetHeader>
+                  <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
+                  <SheetDescription className="sr-only">A list of links to navigate the portfolio website.</SheetDescription>
+              </SheetHeader>
               <Link href="#home" className="mb-8 flex items-center" onClick={() => setMobileMenuOpen(false)}>
                 <Code className="mr-2 h-6 w-6 text-primary" />
                 <span className="font-bold">{personalInfo.name}</span>

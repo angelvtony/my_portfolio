@@ -3,7 +3,7 @@ import { Footer } from '@/components/footer';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { personalInfo, professionalSummary, education, experience, projects, skills } from "@/lib/data";
-import { Mail, Phone, MapPin, Github, Linkedin, Briefcase, GraduationCap, Lightbulb, Wrench, Send, FileText } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Briefcase, GraduationCap, Lightbulb, Wrench, Send, FileText, Code, Smartphone, Database, Network } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ContactForm } from '@/components/contact-form';
@@ -16,6 +16,15 @@ const SectionTitle = ({ icon: Icon, children, id }: { icon: React.ElementType, c
     </h2>
   </div>
 );
+
+const skillCategoryIcons: { [key: string]: React.ElementType } = {
+  languages: Code,
+  mobile_development: Smartphone,
+  databases: Database,
+  tools: Wrench,
+  architecture: Network,
+};
+
 
 export default function Home() {
   return (
@@ -63,19 +72,27 @@ export default function Home() {
 
         <SectionTitle icon={Wrench} id="skills">Skills</SectionTitle>
         <section className="pb-16 sm:pb-24">
-          <div className="max-w-5xl mx-auto space-y-8">
-            {Object.entries(skills).map(([category, skillList]) => (
-              <div key={category}>
-                <h3 className="text-xl font-semibold mb-4 text-center text-foreground capitalize">{category.replace(/_/g, ' ')}</h3>
-                <div className="flex flex-wrap justify-center gap-3">
-                  {skillList.map((skill) => (
-                    <Badge key={skill} variant="default" className="text-sm py-1 px-3 bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {Object.entries(skills).map(([category, skillList]) => {
+              const Icon = skillCategoryIcons[category] || Wrench;
+              return (
+                <Card key={category} className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300 flex flex-col">
+                  <CardHeader className="flex-row items-center gap-4">
+                    <Icon className="h-8 w-8 text-primary" />
+                    <CardTitle className="capitalize text-2xl">{category.replace(/_/g, ' ')}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <div className="flex flex-wrap gap-2">
+                      {skillList.map((skill) => (
+                        <Badge key={skill} variant="secondary" className="text-sm py-1 px-3">
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </section>
 

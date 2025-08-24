@@ -6,6 +6,7 @@ import { personalInfo, professionalSummary, education, experience, projects, ski
 import { Mail, MapPin, Github, Linkedin, Briefcase, GraduationCap, Lightbulb, Wrench, Send, FileText, Code, Smartphone, Database, Network } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ContactForm } from '@/components/contact-form';
 import { cn } from '@/lib/utils';
 
@@ -33,31 +34,43 @@ export default function Home() {
       <Header />
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8">
         
-        <section id="home" className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center text-center py-20 sm:py-32 -mt-16">
-          <div className="animation-fade-in space-y-4">
-            <h1 className="text-5xl font-bold tracking-tighter text-foreground sm:text-6xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-              {personalInfo.name}
-            </h1>
-            <p className="max-w-2xl text-muted-foreground md:text-xl">
-             Software Engineer | Android Developer | AI & ML Enthusiast
-            </p>
-            <div className="flex items-center justify-center gap-4 text-muted-foreground text-sm">
-              <MapPin className="h-4 w-4" />
-              <span>{personalInfo.location}</span>
+        <section id="home" className="min-h-[calc(100vh-4rem)] flex items-center -mt-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+            <div className="animation-fade-in space-y-4 text-center lg:text-left">
+              <h1 className="text-5xl font-bold tracking-tighter text-foreground sm:text-6xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                {personalInfo.name}
+              </h1>
+              <p className="max-w-2xl text-muted-foreground md:text-xl mx-auto lg:mx-0">
+               Software Engineer | Android Developer | AI & ML Enthusiast
+              </p>
+              <div className="flex items-center justify-center lg:justify-start gap-4 text-muted-foreground text-sm">
+                <MapPin className="h-4 w-4" />
+                <span>{personalInfo.location}</span>
+              </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                 <Button asChild>
+                  <Link href="/resume.pdf" target="_blank">
+                    <FileText className="mr-2 h-4 w-4" />
+                    View Resume
+                  </Link>
+                </Button>
+                <Button asChild variant="outline">
+                   <Link href="#contact">
+                    <Mail className="mr-2 h-4 w-4" />
+                    Contact Me
+                  </Link>
+                </Button>
+              </div>
             </div>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-               <Button asChild>
-                <Link href="/resume.pdf" target="_blank">
-                  <FileText className="mr-2 h-4 w-4" />
-                  View Resume
-                </Link>
-              </Button>
-              <Button asChild variant="outline">
-                 <Link href="#contact">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Contact Me
-                </Link>
-              </Button>
+            <div className="flex justify-center animation-fade-in">
+                <Image
+                  src="https://placehold.co/400x400.png"
+                  alt="Angel V Tony"
+                  width={400}
+                  height={400}
+                  className="rounded-full object-cover border-4 border-primary/20 shadow-lg"
+                  data-ai-hint="profile picture"
+                />
             </div>
           </div>
         </section>

@@ -7,6 +7,7 @@ import { Mail, Phone, MapPin, Github, Linkedin, Briefcase, GraduationCap, Lightb
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ContactForm } from '@/components/contact-form';
+import { cn } from '@/lib/utils';
 
 const SectionTitle = ({ icon: Icon, children, id }: { icon: React.ElementType, children: React.ReactNode, id: string }) => (
   <div id={id} className="relative pt-24 -mt-24">
@@ -120,27 +121,39 @@ export default function Home() {
           <div className="relative max-w-3xl mx-auto">
             <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 w-0.5 h-full bg-border" aria-hidden="true"></div>
             <div className="space-y-12">
-              {experience.map((job, index) => (
-                <div key={job.role} className="relative flex items-start gap-4 sm:gap-8">
-                  <div className="absolute left-4 top-1 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background" aria-hidden="true"></div>
-                  <div className="w-full sm:w-1/2 sm:text-right sm:pr-8 pt-0.5">
-                     <p className="font-semibold text-primary">{job.period}</p>
+              {experience.map((job, index) => {
+                const isLeft = index % 2 === 0;
+                return (
+                  <div key={job.role} className="relative flex items-start gap-4 sm:gap-8">
+                    <div className="absolute left-4 top-1 sm:left-1/2 sm:-translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background" aria-hidden="true"></div>
+                    <div className={cn(
+                      "w-full sm:w-1/2 pt-0.5",
+                      isLeft ? "sm:text-right sm:pr-8" : "sm:pl-8 sm:order-2"
+                    )}>
+                      <p className="font-semibold text-primary">{job.period}</p>
+                    </div>
+                    <div className={cn(
+                      "flex-1 pl-8 sm:pl-0 sm:w-1/2",
+                      isLeft ? "" : "sm:text-right"
+                    )}>
+                      <Card className={cn(
+                        "shadow-lg hover:shadow-primary/20 transition-shadow duration-300",
+                        isLeft ? "" : "sm:text-left"
+                      )}>
+                        <CardHeader>
+                          <CardTitle>{job.role}</CardTitle>
+                          <CardDescription>{job.company}</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <ul className="list-disc list-inside text-muted-foreground space-y-2">
+                            {job.tasks.map((task) => <li key={task}>{task}</li>)}
+                          </ul>
+                        </CardContent>
+                      </Card>
+                    </div>
                   </div>
-                  <div className="flex-1 pl-8 sm:pl-0 sm:w-1/2">
-                    <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
-                      <CardHeader>
-                        <CardTitle>{job.role}</CardTitle>
-                        <CardDescription>{job.company}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <ul className="list-disc list-inside text-muted-foreground space-y-2">
-                          {job.tasks.map((task) => <li key={task}>{task}</li>)}
-                        </ul>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>

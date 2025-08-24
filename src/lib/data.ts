@@ -2,13 +2,15 @@ export const personalInfo = {
   name: "Angel V Tony",
   title: "Software Engineer (Android & AI/ML)",
   location: "Thrissur, Kerala",
-  phone: "+91 79024 45243",
-  email: "angelvtony2001@gmail.com",
   github: "https://github.com/angelvtony",
   linkedin: "https://www.linkedin.com/in/angel-v-tony-6716a1215/",
+  contact: {
+    phone: "+91 79024 45243",
+    email: "angelvtony2001@gmail.com",
+  }
 };
 
-export const professionalSummary = "Software Engineer with expertise in mobile development and a strong focus on AI/ML. Proficient in Kotlin, Python, and cross-platform frameworks, experienced in building robust applications, secure API integrations, and scalable solutions.";
+export const professionalSummary = "Software Engineer with expertise in mobile development and a strong focus on AI/ML. Skilled in Kotlin, Python, and cross-platform frameworks. Experienced in building scalable apps, secure API integrations, and leveraging AI for continuous improvement.";
 
 export const education = [
   {
@@ -57,13 +59,17 @@ export const projects = [
     description: "A secure mobile banking application focused on seamless and safe payment transactions for customers.",
     stack: ["Android", "Kotlin", "REST API", "MVVM"],
   },
+    {
+    name: "Camp GIS Asset Management",
+    description: "A PHP/Laravel-based system that reduced asset search and processing time by 50%.",
+    stack: ["PHP", "Laravel", "MySQL", "JavaScript"],
+  },
 ];
 
 export const skills = {
   languages: ["Kotlin", "Python", "Dart", "JavaScript"],
-  mobile: ["Android (Kotlin)", "Flutter", "React Native", "Jetpack Compose", "Coroutines"],
+  mobile_development: ["Android (Kotlin)", "Flutter", "React Native", "Jetpack Compose", "Coroutines"],
   databases: ["MongoDB", "MySQL", "SQLite"],
   tools: ["Git", "Postman", "Firebase", "Android Studio", "VS Code"],
-  apis_architecture: ["MVVM", "MVI", "RESTful APIs"],
-  version_control: ["GitHub"],
+  architecture: ["MVVM", "MVI", "REST APIs"],
 };

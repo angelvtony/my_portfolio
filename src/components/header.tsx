@@ -3,7 +3,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { Menu, Code } from "lucide-react";
-import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -13,16 +12,16 @@ import { personalInfo } from "@/lib/data";
 
 const navItems = [
   { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const pathname = usePathname();
 
   React.useEffect(() => {
     const handleScroll = () => {

@@ -3,7 +3,7 @@ import { Footer } from '@/components/footer';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { personalInfo, professionalSummary, education, experience, projects, skills } from "@/lib/data";
-import { Mail, Phone, MapPin, Github, Linkedin, Briefcase, GraduationCap, Lightbulb, Wrench, Send, FileText, Code, Smartphone, Database, Network } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin, Briefcase, GraduationCap, Lightbulb, Wrench, Send, FileText, Code, Smartphone, Database, Network } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ContactForm } from '@/components/contact-form';
@@ -118,34 +118,36 @@ export default function Home() {
 
         <SectionTitle icon={Briefcase} id="experience">Experience</SectionTitle>
         <section className="pb-16 sm:pb-24">
-          <div className="relative max-w-3xl mx-auto">
+          <div className="relative max-w-3xl mx-auto px-4 sm:px-0">
             <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 w-0.5 h-full bg-border" aria-hidden="true"></div>
             <div className="space-y-12">
               {experience.map((job, index) => {
-                const isLeft = index % 2 === 0;
+                const isLeft = index % 2 !== 0; // Start with the first item on the left on desktop
                 return (
-                  <div key={job.role} className="relative flex items-start gap-4 sm:gap-8">
-                    <div className="absolute left-4 top-1 sm:left-1/2 sm:-translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background" aria-hidden="true"></div>
+                  <div key={job.role} className="relative flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
+                    <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background" aria-hidden="true"></div>
+                    
                     <div className={cn(
-                      "w-full sm:w-1/2 pt-0.5",
-                      isLeft ? "sm:text-right sm:pr-8" : "sm:pl-8 sm:order-2"
+                      "w-full sm:w-1/2 space-y-2 pt-1 sm:pt-0",
+                      isLeft ? "sm:text-right sm:pr-12" : "sm:pl-12 sm:order-2"
                     )}>
-                      <p className="font-semibold text-primary">{job.period}</p>
+                       <p className="font-semibold text-primary">{job.period}</p>
                     </div>
+
                     <div className={cn(
-                      "flex-1 pl-8 sm:pl-0 sm:w-1/2",
-                      isLeft ? "" : "sm:text-right"
+                      "w-full sm:w-1/2 pl-12 sm:pl-0",
+                       isLeft ? "sm:order-1 sm:text-right" : "sm:text-left"
                     )}>
                       <Card className={cn(
-                        "shadow-lg hover:shadow-primary/20 transition-shadow duration-300",
-                        isLeft ? "" : "sm:text-left"
+                        "shadow-lg hover:shadow-primary/20 transition-shadow duration-300 w-full",
+                         isLeft ? "sm:text-left" : ""
                       )}>
                         <CardHeader>
                           <CardTitle>{job.role}</CardTitle>
                           <CardDescription>{job.company}</CardDescription>
                         </CardHeader>
                         <CardContent>
-                          <ul className="list-disc list-inside text-muted-foreground space-y-2">
+                          <ul className="list-disc list-inside text-muted-foreground space-y-2 text-left">
                             {job.tasks.map((task) => <li key={task}>{task}</li>)}
                           </ul>
                         </CardContent>

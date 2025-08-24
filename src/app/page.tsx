@@ -190,10 +190,6 @@ export default function Home() {
                             <Mail className="h-5 w-5" />
                             <span>Email</span>
                         </a>
-                        <a href={`tel:${personalInfo.contact.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-primary transition-colors">
-                            <Phone className="h-5 w-5" />
-                            <span>Phone</span>
-                        </a>
                         <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
                             <Github className="h-5 w-5" />
                             <span>GitHub</span>

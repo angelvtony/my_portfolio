@@ -5,7 +5,6 @@ export const personalInfo = {
   github: "https://github.com/angelvtony",
   linkedin: "https://www.linkedin.com/in/angel-v-tony-6716a1215/",
   contact: {
-    phone: "+91 79024 45243",
     email: "angelvtony2001@gmail.com",
   }
 };

@@ -53,11 +53,6 @@ export const projects = [
     description: "An Android application designed for private banking customers, offering exclusive financial services and portfolio management.",
     stack: ["Android", "Kotlin", "REST API", "MVI"],
   },
-  {
-    name: "Helios (Arab Bank Payment App)",
-    description: "A secure mobile banking application focused on seamless and safe payment transactions for customers.",
-    stack: ["Android", "Kotlin", "REST API", "MVVM"],
-  },
     {
     name: "Camp GIS Asset Management",
     description: "A PHP/Laravel-based system that reduced asset search and processing time by 50%.",

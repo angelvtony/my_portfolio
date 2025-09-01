@@ -3,7 +3,7 @@ export const personalInfo = {
   title: "Software Engineer (Android & AI/ML)",
   location: "Thrissur, Kerala",
   github: "https://github.com/angelvtony",
-  linkedin: "https://www.linkedin.com/in/angel-v-tony-6716a1215/",
+  linkedin: "https://www.linkedin.com/in/angel-v-tony-a88b35208/",
   contact: {
     email: "angelvtony2001@gmail.com",
   }

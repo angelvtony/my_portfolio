@@ -35,19 +35,20 @@ export default function Home() {
         
         <section id="home" className="min-h-[calc(100vh-4rem)] flex items-center justify-center -mt-16">
           <div className="text-center animation-fade-in space-y-4">
-            <h1 className="text-5xl font-bold tracking-tighter text-foreground sm:text-6xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+            <h1 className="text-5xl font-bold tracking-tighter text-foreground sm:text-6xl md:text-7xl 
+               bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent
+               leading-[1.2] pb-1">
               {personalInfo.name}
             </h1>
+
             <p className="max-w-2xl text-muted-foreground md:text-xl mx-auto">
               Software Engineer | Android Developer | AI & ML Enthusiast
             </p>
             <div className="flex items-center justify-center gap-4 text-muted-foreground text-sm">
-              <MapPin className="h-4 w-4" />
-              <span>{personalInfo.location}</span>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Button asChild>
-                <Link href="/resume.pdf" target="_blank">
+                <Link href="https://1drv.ms/w/c/86e77ee02dfbb959/EWCX8rDYsdNNuIFGBogwBfwBF3LTTFIURiKxM5c_ek_iGA?e=smQpbb" target="_blank">
                   <FileText className="mr-2 h-4 w-4" />
                   View Resume
                 </Link>
@@ -118,47 +119,64 @@ export default function Home() {
 
         <SectionTitle icon={Briefcase} id="experience">Experience</SectionTitle>
         <section className="pb-16 sm:pb-24">
-          <div className="relative max-w-3xl mx-auto px-4 sm:px-0">
-            <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 w-0.5 h-full bg-border" aria-hidden="true"></div>
-            <div className="space-y-12">
-              {experience.map((job, index) => {
-                const isLeft = index % 2 !== 0; // Start with the first item on the left on desktop
-                return (
-                  <div key={job.role} className="relative flex flex-col sm:flex-row items-start gap-4 sm:gap-8">
-                    <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background" aria-hidden="true"></div>
-                    
-                    <div className={cn(
-                      "w-full sm:w-1/2 space-y-2 pt-1 sm:pt-0",
-                      isLeft ? "sm:text-right sm:pr-12" : "sm:pl-12 sm:order-2"
-                    )}>
-                       <p className="font-semibold text-primary">{job.period}</p>
-                    </div>
+  <div className="relative max-w-3xl mx-auto px-4 sm:px-0">
+    {/* Vertical line */}
+    <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 w-0.5 h-full bg-border" aria-hidden="true"></div>
 
-                    <div className={cn(
-                      "w-full sm:w-1/2 pl-12 sm:pl-0",
-                       isLeft ? "sm:order-1 sm:text-right" : "sm:text-left"
-                    )}>
-                      <Card className={cn(
-                        "shadow-lg hover:shadow-primary/20 transition-shadow duration-300 w-full",
-                         isLeft ? "sm:text-left" : ""
-                      )}>
-                        <CardHeader>
-                          <CardTitle>{job.role}</CardTitle>
-                          <CardDescription>{job.company}</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <ul className="list-disc list-inside text-muted-foreground space-y-2 text-left">
-                            {job.tasks.map((task) => <li key={task}>{task}</li>)}
-                          </ul>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </div>
-                );
-              })}
+    <div className="space-y-12">
+      {experience.map((job, index) => {
+        const isLeft = index % 2 !== 0;
+        return (
+          <div
+            key={job.role}
+            className="relative flex flex-col sm:flex-row items-start gap-4 sm:gap-8"
+          >
+            {/* Timeline Dot */}
+            <div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background" aria-hidden="true"></div>
+
+            {/* Period (on mobile show above card, on desktop align left/right) */}
+            <div
+              className={cn(
+                "w-full pl-12 sm:pl-0 sm:w-1/2 space-y-2 pt-1 sm:pt-0",
+                isLeft ? "sm:text-right sm:pr-12" : "sm:pl-12 sm:order-2"
+              )}
+            >
+              <p className="font-semibold text-primary">{job.period}</p>
+            </div>
+
+            {/* Card */}
+            <div
+              className={cn(
+                "w-full pl-12 sm:pl-0 sm:w-1/2",
+                isLeft ? "sm:order-1 sm:text-right" : "sm:text-left"
+              )}
+            >
+              <Card
+                className={cn(
+                  "shadow-lg hover:shadow-primary/20 transition-shadow duration-300 w-full text-left", // 👈 force text-left on mobile
+                  isLeft ? "sm:text-left" : ""
+                )}
+              >
+                <CardHeader>
+                  <CardTitle>{job.role}</CardTitle>
+                  <CardDescription>{job.company}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc list-inside text-muted-foreground space-y-2 text-left">
+                    {job.tasks.map((task) => (
+                      <li key={task}>{task}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
             </div>
           </div>
-        </section>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
         
         <SectionTitle icon={GraduationCap} id="education">Education</SectionTitle>
         <section className="pb-16 sm:pb-24">
